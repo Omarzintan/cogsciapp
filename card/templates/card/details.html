@@ -1,0 +1,16 @@
+<h1> {{card.title}} </h1>
+<p> {{card.answer}}</p>
+
+<img class="card-ing-top" src="{{ card.image.url }}"  />
+<head></head>
+<body>
+    <a href="../{{ card.id |add:"1" }}" > next pic </a>
+    <a href="../{{ card.id |add:"1" }}">
+  <img src="{{ card.image.url }}" alt="HTML tutorial" style="width:42px;height:42px;border:0;">
+</a>
+<a href="../{{ card.id |add:"1" }}">
+<img src="{{ card.image.url }}" alt="HTML tutorial" style="width:42px;height:42px;border:0;">
+</a>
+</body>
+ #Now you need to reorder the page with the right buttons in order
+ to increment corect/wrong and to change the picture as well!

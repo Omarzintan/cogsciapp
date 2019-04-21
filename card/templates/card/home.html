@@ -1,0 +1,9 @@
+{% with count=0 %}
+<head></head>
+<body>
+  <a href="home/{{count |add:"1"}}"> next pic </a>
+  {{ count |add:"2" }}
+
+  </body>
+
+  {% endwith %}

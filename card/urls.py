@@ -17,9 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-import card.views
+from . import views
 
 urlpatterns = [
-    path('', card.views.home),
-    path('home/', include('card.urls')),
-] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    path('<int:card_id>/', views.details, name='details'),
+]
