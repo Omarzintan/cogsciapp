@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head></head>
+<body>
+  <h1> Card {{ trainingcard.id }} </h1>
+
+  <form method="POST" action ="{% url 'training' trainingcard.id %}" >
+    {% csrf_token %}
+    <input type="image" alt="Full" src="{{ card.image.url }}" style="width:42px;height:42px;border:0;">
+    <input type="hidden" name="1">
+  </form>
+  <form method="POST" action ="{% url 'training' trainingcard.id  %}">
+    {% csrf_token %}
+    <input type="image" alt="Truncated" src="{{ card.image.url }}" style="width:42px;height:42px;border:0;">
+    <input type="hidden" name="2">
+  </form>
+
+
+
+
+    </body>
+
+{% endblock %}

@@ -1,9 +1,26 @@
-{% with count=0 %}
-<head></head>
-<body>
-  <a href="home/{{count |add:"1"}}"> next pic </a>
-  {{ count |add:"2" }}
+{% extends 'base.html' %}
 
-  </body>
+{% block content %}
 
-  {% endwith %}
+
+add instructions here too! [In its own section]
+
+
+<div class="row">
+  {% for trainingcard in trainingcards.all %}
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <img class="bd-placeholder-img card-img-top" src="{{ trainingcard.image.url }}"  </img>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <section>
+
+  <a href="../1/train"> Test yourself </a>
+  <a href="../test"> Actual Experiment </a>
+
+  </section>
+Add timer??
+{% endblock %}

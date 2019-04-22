@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'results.apps.ResultsConfig',
     'card.apps.CardConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -56,7 +55,7 @@ ROOT_URLCONF = 'CogSci.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['CogSci/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
