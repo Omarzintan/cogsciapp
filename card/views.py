@@ -31,7 +31,7 @@ def training(request, trainingcard_id):
         try:
             nextcard = TrainingCard.objects.get(pk=trainingcard_id+1)
         except TrainingCard.DoesNotExist:
-            return redirect('../start')
+            return redirect('../home')
         return render(request, 'card/training.html', {'trainingcard':nextcard})
 
 def test(request):
@@ -58,7 +58,7 @@ def correct(request, card_id):
         try:
             nextcard = Card.objects.get(pk=card_id+1)
         except Card.DoesNotExist:
-            return redirect('../../home/thanks')
+            return redirect('../../thanks')
         return render(request, 'card/details.html', {'card':nextcard})
 
 def thanks(request):

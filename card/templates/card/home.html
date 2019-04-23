@@ -3,24 +3,52 @@
 {% block content %}
 
 
-add instructions here too! [In its own section]
 
 
-<div class="row">
-  {% for trainingcard in trainingcards.all %}
-    <div class="col-md-4">
-      <div class="card mb-4 shadow-sm">
-        <img class="bd-placeholder-img card-img-top" src="{{ trainingcard.image.url }}"  </img>
+<style>
+  div.polaroid {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  section {
+    display: block;
+  }
+  div.container1 {
+    text-align: center;
+    padding: 10px 20px;
+  }
+
+</style>
+
+<section>
+  <h1> Instructions </h1>
+  <p> Details of instructions given here </p>
+  <a href="../1/train" class="button"> Test yourself </a>
+  <a href="../test" class="button"> Actual Experiment </a>
+</section>
+<div class="container">
+  <div class="row">
+    <div class="polaroid">
+      {% for trainingcard in trainingcards.all %}
+      <div>
+        <div class="card mb-4 shadow-sm">
+          <img class="bd-placeholder-img card-img-top" src="{{ trainingcard.image.url }}"  </img>
+          <div class="container1">
+            <p> Card {{trainingcard.id}} </p> </div>
+          </div>
+        </div>
+        {% endfor %}
       </div>
-    </div>
-    {% endfor %}
-  </div>
 
-  <section>
 
-  <a href="../1/train"> Test yourself </a>
-  <a href="../test"> Actual Experiment </a>
-
-  </section>
 Add timer??
 {% endblock %}

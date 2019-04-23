@@ -2,41 +2,68 @@
 
 {% block content %}
 
-<h1> {{card.title}} </h1>
-<p> {{card.answer}}</p>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
 
 
 <style>
-input[type=submit] {
-    background: {{card.image.url}};
-    border: 0;
+  img {
     display: block;
-    height: 42px;
-    width: 42px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-radius: 8px;
+  }
+  input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
 }
+
+  div.row {
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+input:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+
 </style>
 <img class="card-ing-top" src="{{ card.image.url }}"  />
 <head></head>
-<body>
-    <a href="../{{ card.id |add:"1" }}" > next pic </a>
-    <a href="../{{ card.id |add:"1" }}">
-  <img src="{{ card.image.url }}" alt="HTML tutorial" style="width:42px;height:42px;border:0;">
-</a>
-<a type="submit" href="../{{ card.id |add:"1" }}">
-<img src="{{ card.image.url }}" alt="HTML tutorial" style="width:42px;height:42px;border:0;">
-</a>
 
 
-<form method="POST" action ="{% url 'answered' card.id %}" >
-  {% csrf_token %}
-  <input type="image" alt="Full" src="{{ card.image.url }}" style="width:42px;height:42px;border:0;">
-  <input type="hidden" name="1">
-</form>
-<form method="POST" action ="{% url 'answered' card.id  %}">
-  {% csrf_token %}
-  <input type="image" alt="Truncated" src="{{ card.image.url }}" style="width:42px;height:42px;border:0;">
-  <input type="hidden" name="2">
-</form>
-</body>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <form method="POST" action ="{% url 'answered' card.id %}" >
+        {% csrf_token %}
+        <input type="image" alt="Full" src="{{ card.image.url }}" >
+        <input type="hidden" name="1">
+      </form>
+    </div>
+    <div class="col-md-6">
+      <form method="POST" action ="{% url 'answered' card.id  %}">
+        {% csrf_token %}
+        <input type="image" alt="Truncated" src="{{ card.image.url }}" >
+        <input type="hidden" name="2">
+      </form>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
