@@ -13,13 +13,7 @@
 
 
 <style>
-  img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    border-radius: 8px;
-  }
+
   input {
     display: block;
     margin-left: auto;
@@ -42,24 +36,50 @@ input:hover {
 
 
 </style>
-<img class="card-ing-top" src="{{ card.image.url }}"  />
+  <p> {{card.img.url}} </p>
+  <img class="resize" src="{{ card.image.url }}" />
+
 <head></head>
 
 
+<div style="font-style:bold" id="quiz-time-left"></div>
+<script type="text/javascript">
+  var total_seconds=3;
+  var c_minutes = parseInt(total_seconds/60);
+  var c_seconds = parseInt(total_seconds%60);
+  function CheckTime(){
+    document.getElementById("quiz-time-left").innerHTML
+    = 'Time Left: ' + c_seconds + 'seconds';
+    if (total_seconds <=0){
+      setTimeout('document.quiz.submit()', 1);
+    } else {
+      total_seconds = total_seconds - 1;
+      c_minutes = parseInt(total_seconds/60);
+      c_seconds = parseInt(total_seconds%60);
+      setTimeout("CheckTime()", 1000);
+    }
+  }
+  setTimeout("CheckTime()",1000);
+  </script>
+
+  <form method="POST" name="quiz" action ="{% url 'answered' card.id %}" >
+    {% csrf_token %}
+    <input type="hidden" name="0">
+  </form>
 
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6">
       <form method="POST" action ="{% url 'answered' card.id %}" >
         {% csrf_token %}
-        <input type="image" alt="Full" src="{{ card.image.url }}" >
+        <input type="image" alt="Full" src="{{ answercard1.image.url }}" >
         <input type="hidden" name="1">
       </form>
     </div>
     <div class="col-md-6">
       <form method="POST" action ="{% url 'answered' card.id  %}">
         {% csrf_token %}
-        <input type="image" alt="Truncated" src="{{ card.image.url }}" >
+        <input type="image" alt="Truncated" src="{{ answercard2.image.url }}" >
         <input type="hidden" name="2">
       </form>
     </div>

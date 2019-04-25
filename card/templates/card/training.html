@@ -40,14 +40,14 @@
       <div class="col-md-6">
         <form method="POST" action ="{% url 'training' trainingcard.id %}" >
           {% csrf_token %}
-          <input type="image" alt="Full" src="{{ card.image.url }}" >
+          <input type="image" alt="Full" src="{{ answercard1.image.url }}" >
           <input type="hidden" name="1">
         </form>
       </div>
       <div class="col-md-6">
         <form method="POST" action ="{% url 'training' trainingcard.id  %}">
           {% csrf_token %}
-          <input type="image" alt="Truncated" src="{{ card.image.url }}" >
+          <input type="image" alt="Truncated" src="{{ answercard2.image.url }}" >
           <input type="hidden" name="2">
         </form>
       </div>

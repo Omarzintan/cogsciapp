@@ -7,6 +7,8 @@ class Card(models.Model):
     answer = models.IntegerField()
     correct = models.IntegerField(default=0)
     wrong = models.IntegerField(default=0)
+    runout = models.IntegerField(default=0)
+
 
 class TrainingCard(models.Model):
     title = models.CharField(max_length=10)
@@ -15,6 +17,12 @@ class TrainingCard(models.Model):
     correct = models.IntegerField(default=0)
     wrong = models.IntegerField(default=0)
 
+class AnswerCard(models.Model):
+    Answer = models.IntegerField(default=0)
+    image = models.ImageField(upload_to='images/')
+
+class ExampleCard(models.Model):
+    image = models.ImageField(upload_to='images/')
 
 def title(self):
     return self.title
